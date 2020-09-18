@@ -12,7 +12,7 @@ pipeline {
                                 if [ "$lintErrors" -gt "0" ]; then
                                     echo "Errors!!!"
                                     cat hadolint_lint.txt
-                                    exit 1
+                                    ;
                                 else
                                     echo "No Errors!!!"
                                 fi
