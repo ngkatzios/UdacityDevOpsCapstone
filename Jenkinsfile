@@ -46,7 +46,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-capstone', region: 'eu-west-2') {
                     sh "aws eks --region eu-west-2 update-kubeconfig --name capstone"
-                    sh "kubectl config use-context ARN-CLUSTER-HERE"
+                    sh "kubectl config use-context arn:aws:eks:eu-west-2:764620243859:cluster/capstone"
                     sh "kubectl apply -f kubernetes.yml"
                     sh "kubectl get nodes"
                     sh "kubectl get deployments"
