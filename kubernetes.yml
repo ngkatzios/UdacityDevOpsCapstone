@@ -53,7 +53,7 @@ spec:
           httpGet:
             path: /
             scheme: HTTP
-            port: 20000
+            port: 80
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 2
@@ -71,8 +71,8 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 20000
-      targetPort: 20000
+      port: 80
+      targetPort: 80
     - name: https
       protocol: TCP
       port: 443
@@ -92,3 +92,11 @@ spec:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
 
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: devops-capstone-app
+  annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: "ingress-nginx"
