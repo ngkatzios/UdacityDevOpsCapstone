@@ -92,11 +92,3 @@ spec:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
 
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: devops-capstone-app
-  annotations:
-    ingress.kubernetes.io/force-ssl-redirect: "true"
-    kubernetes.io/ingress.class: "ingress-nginx"
