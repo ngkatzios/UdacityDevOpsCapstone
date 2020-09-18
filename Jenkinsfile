@@ -7,7 +7,16 @@ pipeline {
                 script {
                     docker.image('hadolint/hadolint').inside() {
                             sh 'hadolint ./Dockerfile | tee -a hadolint_lint.txt'
-                            sh 'cat hadolint_lint.txt'
+                            sh '''
+                                lintErrors=$(stat -c%s hadolint_lint.txt)
+                                if [ "$lintErrors" -gt "0" ]; then
+                                    echo "Errors!!!"
+                                    cat hadolint_lint.txt
+                                    exit 1
+                                else
+                                    echo "No Errors!!!"
+                                fi
+                            '''
                     }
                 }
             }
