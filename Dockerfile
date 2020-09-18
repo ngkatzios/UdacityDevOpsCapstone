@@ -1,13 +1,11 @@
-FROM nginx:stable
+FROM continuumio/miniconda:latest
 
-## Step 1:
-# Copy index.html to nginx directory
-COPY html/index.html /usr/share/nginx/html
-COP html/background01.jpg /usr/share/nginx/html
-;fd
-sfdaj
-"kdf
-dajo
-## Step 2:
-# Expose port 80
-EXPOSERR 80
+# hadolint ignore=SC2102
+RUN apt-get update \
+ && apt-get install -y \
+    gcc \
+    fortunes \
+    cowsay \
+ && pip install apache-airflow[crypto,postgres]
+
+CMD /usr/games/fortune | /usr/games/cowsay
