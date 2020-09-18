@@ -1,7 +1,7 @@
 FROM nginx:stable
 
 ## Step 1:
-# Copy index.html to nginx directory
+# Copy source code to working directory
 COPY html/index.html /usr/share/nginx/html
 COPY html/background01.jpg /usr/share/nginx/html
 
